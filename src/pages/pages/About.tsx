@@ -44,7 +44,7 @@ const About: React.FC<AboutProps> = ({ menuItems }) => {
       </Head>
 
       <Header menuItems={menuItems} />
-      <Navbar menuItems={menuItems} logo={'img/headImh.svg'} />
+      <Navbar menuItems={menuItems}/>
 
       <main className="min-h-screen bg-white">
         {/* Hero Section */}
@@ -145,29 +145,17 @@ const About: React.FC<AboutProps> = ({ menuItems }) => {
 
         {/* Team Section */}
         <section className="py-16 bg-gray-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Meet the Team</h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-              {teamMembers.map((member, index) => (
-                <div key={index} className="flex flex-col items-center">
-                  <div className="w-48 h-48 rounded-full overflow-hidden mb-4">
-                    <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-1">{member.name}</h3>
-                  <p className="text-gray-600">{member.role}</p>
-                </div>
-              ))}
-            </div>
-            <div className="flex justify-center mt-8">
-              <button className="text-blue-600 hover:text-blue-800 font-medium flex items-center">
-                see more
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                </svg>
-              </button>
-            </div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Team</h2>
+            <p className="text-lg text-gray-600 mb-8">
+              Meet the dedicated team behind Didi Finance's success on our <a href="/team" className="text-blue-600 hover:text-blue-800 underline">Team page</a>.
+            </p>
+            <a 
+              href="/team" 
+              className="inline-block bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-colors"
+            >
+              Meet the Team
+            </a>
           </div>
         </section>
 
