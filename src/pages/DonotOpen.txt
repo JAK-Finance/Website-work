@@ -1,0 +1,155 @@
+import Head from 'next/head';
+import Image from 'next/image';
+import Card from './components/Card';
+
+export default function Home() {
+  return (
+  //   // Main screen container - now only sets the background color and centers the form
+  //   <div className="min-h-screen bg-white flex items-center justify-center p-4" style={{ fontFamily: "'Syne', sans-serif" }}>
+  //     <Head>
+  //       <title>Stylish Form</title>
+  //       <meta name="description" content="A stylish form UI" />
+  //       <link rel="icon" href="/favicon.ico" />
+  //     </Head>
+
+  //     {/* Main Form Container - now relative to position images inside it */}
+  //     <div className="relative z-10 w-full max-w-md mx-auto p-8 rounded-lg shadow-xl bg-blue-900 backdrop-filter backdrop-blur-sm overflow-hidden lg:scale-75 lg:p-6">
+  //       {/* Background Images - positioned absolutely within the form container */}
+
+  //       {/* First Image - made even bigger and positioned to cover more from the top */}
+  //       <Image
+  //         src="/img/popFormSmall.png" // Path relative to the public directory
+  //         alt="Background design element 1"
+  //         width={140} // Increased size further to cover more area
+  //         height={80} // Increased size further
+  //         // Positioned to bring more of its bottom into view, covering more background
+  //         // top value is adjusted to control how much of the image is visible
+  //         className="absolute right-[70px] top-[-380px] z-20 opacity-50 transform translate-x-1/2 translate-y-1/2"
+  //       />
+
+  //       {/* Second Image - positioned slightly lower and behind the first */}
+  //       <Image
+  //         src="/img/popFormSmall.png" // Path relative to the public directory
+  //         alt="Background design element 2"
+  //         width={100} // Keeping this size or adjusting as needed
+  //         height={90} // Keeping this size or adjusting as needed
+  //         className="absolute right-[50px] top-[150px] z-5 opacity-70 transform translate-x-1/2 translate-y-1/2"
+  //       />
+
+  //       {/* Ensure form content is above all background images */}
+  //       <div className="relative z-30"> {/* Increased z-index for content to be above both images */}
+  //         <h1 className="text-white text-3xl font-bold text-center mb-8">
+  //           Register
+  //         </h1>
+  //         <form className="space-y-6">
+  //           <div>
+  //             <input
+  //               type="text"
+  //               id="name"
+  //               style={{ borderRadius: '100px' }}
+  //               className="w-full px-4 py-3 bg-gray-300 border border-blue-600 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:shadow-lg transition-colors duration-300"
+  //               placeholder="Name"
+  //               required
+  //             />
+  //           </div>
+
+  //           <div>
+  //             <input
+  //               type="tel"
+  //               id="phone"
+  //               style={{ borderRadius: '100px' }}
+  //               className="w-full px-4 py-3 bg-gray-300 border border-blue-600 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:shadow-lg transition-colors duration-300"
+  //               placeholder="Phone number"
+  //               required
+  //             />
+  //           </div>
+
+  //           <div>
+  //             <select
+  //               id="region"
+  //               style={{ borderRadius: '100px' }}
+  //               className="w-full px-4 py-3 bg-gray-300 border border-blue-600 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:shadow-lg transition-colors duration-300"
+  //               defaultValue=""
+  //             >
+  //               <option value="" disabled hidden>
+  //                 Region
+  //               </option>
+  //               <option value="Adamawa">Adamawa</option>
+  //               <option value="Centre">Centre</option>
+  //               <option value="East">East</option>
+  //               <option value="Far North">Far North</option>
+  //               <option value="Littoral">Littoral</option>
+  //               <option value="North">North</option>
+  //               <option value="North-West">North-West</option>
+  //               <option value="West">West</option>
+  //               <option value="South">South</option>
+  //               <option value="South-West">South-West</option>
+  //             </select>
+  //           </div>
+
+  //           <div>
+  //             <input
+  //               type="text"
+  //               id="town"
+  //               style={{ borderRadius: '100px' }}
+  //               className="w-full px-4 py-3 bg-gray-300 border border-blue-600 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:shadow-lg transition-colors duration-300"
+  //               placeholder="Town"
+  //               required
+  //             />
+  //           </div>
+
+  //           <div>
+  //             <input
+  //               type="email"
+  //               id="email"
+  //               style={{ borderRadius: '100px' }}
+  //               className="w-full px-4 py-3 bg-gray-300 border border-blue-600 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:shadow-lg transition-colors duration-300"
+  //               placeholder="Email"
+  //               required
+  //             />
+  //           </div>
+
+  //           <button
+  //             type="submit"
+  //             className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-blue-900 transition duration-300 ease-in-out"
+  //           >
+  //             Register
+  //           </button>
+  //         </form>
+
+  //         <p className="mt-8 text-center text-gray-400 text-sm">
+  //           Don't have an account?{' '}
+  //           <a href="#" className="font-medium text-blue-400 hover:text-blue-300">
+  //             Sign Up
+  //           </a>
+  //         </p>
+  //       </div>
+  //     </div>
+  //   </div>
+  // );
+  <Card
+      backgroundImage="/img/popFormBig.png"
+      title={
+        <>
+          Empowering <br />
+          <span className="font-bold text-4xl">Sustainable Future</span>
+        </>
+      }
+      description={
+        <>
+          We help small-scale farmers across Francophone Africa become profitable, sustainable, and confident.{' '}
+          <a href="#" className="underline text-teal-300 hover:text-teal-200">
+            Register Farm here
+          </a>
+        </>
+      }
+      stats={[
+        { label: 'Hectares', value: 5600 },
+        { label: 'Regions', value: 3 },
+        { label: 'Farmers', value: 100 },
+        { label: 'Waitlist Farmers', value: 500 },
+      ]}
+      showFooter={false}
+    />
+  );
+}
