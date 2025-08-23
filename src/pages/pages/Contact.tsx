@@ -64,32 +64,34 @@ const Contact: React.FC<ContactProps> = ({ menuItems }) => {
             </div>
 
             {/* Contact Form */}
-            <div>
+            <div className="bg-white shadow-md rounded-md p-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-6">Send Us a Message</h2>
               <form className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-                    Full Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                    required
-                  />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+                      Full Name
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      className="mt-1 block w-full rounded-md border-[#122342] shadow-sm focus:border-[#14B9C1] focus:ring-[#14B9C1] h-10"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                      Email Address
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      className="mt-1 block w-full rounded-md border-light-gray-500 shadow-sm focus:border-[#14B9C1] focus:ring-[#14B9C1] h-10"
+                      required
+                    />
+                  </div>
                 </div>
                 <div>
                   <label htmlFor="subject" className="block text-sm font-medium text-gray-700">
@@ -99,7 +101,7 @@ const Contact: React.FC<ContactProps> = ({ menuItems }) => {
                     type="text"
                     id="subject"
                     name="subject"
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    className="mt-1 block w-full rounded-md border-light-gray-500 shadow-sm focus:border-[#14B9C1] focus:ring-[#14B9C1] h-10"
                     required
                   />
                 </div>
@@ -111,13 +113,13 @@ const Contact: React.FC<ContactProps> = ({ menuItems }) => {
                     id="message"
                     name="message"
                     rows={4}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    className="mt-1 block w-full rounded-md border-light-gray-500 shadow-sm focus:border-[#14B9C1] focus:ring-[#14B9C1] h-36"
                     required
                   />
                 </div>
                 <button
                   type="submit"
-                  className="w-full bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                  className="w-full bg-[#122342] text-[#14B9C1] py-3 px-4 rounded-md hover:bg-[#122377] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                 >
                   Send Message
                 </button>

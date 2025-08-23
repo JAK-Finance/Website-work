@@ -35,7 +35,7 @@ const Service: React.FC<ServiceProps> = ({ menuItems }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Page Header */}
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-blue-900 mb-4">
+            <h1 className="text-4xl font-bold text-[#14B9C1] mb-4">
               Our Services
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -57,14 +57,14 @@ const Service: React.FC<ServiceProps> = ({ menuItems }) => {
 
           {/* Call to Action Section */}
           <div className="mt-16 text-center">
-            <div className="bg-blue-50 rounded-lg shadow-lg p-8 max-w-2xl mx-auto">
-              <h2 className="text-2xl font-bold text-blue-900 mb-4">
+            <div className="bg-[#122342] rounded-lg shadow-lg p-8 max-w-2xl mx-auto">
+              <h2 className="text-2xl font-bold text-[#14B9C1] mb-4">
                 Ready to Get Started?
               </h2>
               <p className="text-gray-600 mb-6">
                 Join thousands of farmers who are already benefiting from our services
               </p>
-              <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-lg transition-colors duration-200">
+              <button className="bg-[#14B9C1] hover:bg-[#14BFB0] text-[#122342] font-bold py-3 px-8 rounded-lg transition-colors duration-200">
                 Contact Us Today
               </button>
             </div>

@@ -8,7 +8,7 @@ interface ServiceCardProps {
 }
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ service, lang = 'en', onClick }) => {
-  const bgColorClass = 'bg-blue-500 hover:bg-blue-600';
+  const bgColorClass = 'bg-[#14B9C1] hover:bg-[#122342]';
 
   return (
     <div 
@@ -41,7 +41,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, lang = 'en', onClick
       
       <div className="p-6 pt-0 mt-auto bg-white">
         <button 
-          className="w-full bg-blue-500 text-white py-3 px-4 rounded-md font-medium transition-all duration-300 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          className="w-full bg-[#122342] text-white py-3 px-4 rounded-md font-medium transition-all duration-300 hover:bg-[#14B9C1] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#14B9C1]"
           onClick={(e) => {
             e.stopPropagation();
             onClick?.();
