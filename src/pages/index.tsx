@@ -1,6 +1,7 @@
 // pages/index.tsx (or app/page.tsx)
 
-import React, { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
+
 import Head from 'next/head';
 import Image from 'next/image';
 
@@ -11,92 +12,157 @@ import Navbar from './components/Navbar';  // Added import for Navbar
 // Import types (adjust path as needed based on where types/index.d.ts is)
 import { MenuItem } from './components/types';
 
-const HomePage: React.FC = () => {
-  // Define your menu items
-  const menuItems: MenuItem[] = [
-    { name: 'Home', path: '/' },
-    { name: 'About Us', path: '/about' },
-    { name: 'Services', path: '/services' },
-    { name: 'Team', path: '/team' },
-    { name: 'Contact', path: '/contact' },
-  ];
+const menuItems: MenuItem[] = [
+  { name: 'Home', path: '/' },
+  { name: 'About Us', path: '/about' },
+  { name: 'Services', path: '/services' },
+  { name: 'Team', path: '/team' },
+  { name: 'Contact', path: '/contact' },
+];
 
-  const valuePropositions = [
-    {
-      title: 'Transparency',
-      description: 'We ensure to build trust with all our stakeholders at every level.',
-    },
-    {
-      title: 'Growth',
-      description: 'We have carefully built our network to promote growth at every level.',
-    },
-    {
-      title: 'Excellence',
-      description: 'We believe in doing it the right and best way possible. We thrive in excellence.',
-    },
-    {
-      title: 'Integrity',
-      description: 'We make sure to keep to our word. We understand that most plans of our stakeholders lie with the promises we make.',
-    },
-    {
-      title: 'Teamwork',
-      description: 'We know that a single hand cannot tie a broom, that is why we believe in the strength our people to help our stakeholders experience their dreams.',
-    },
-    {
-      title: 'Innovation',
-      description: 'We are always looking for new ways, technology, regulations, and new markets to leverage on for amazing products for all our stakeholders.',
-    },
-  ];
+const quickLinks = [
+  { name: 'Home', href: '#' },
+  { name: 'Services', href: '#', active: true },
+  { name: 'Register a Farm', href: '#' },
+  { name: 'Home', href: '#' },
+  { name: 'Services', href: '#', active: true },
+  { name: 'Register a Farm', href: '#' },
+];
 
+const valuePropositions = [
+  {
+    title: 'Transparency',
+    description: 'We ensure to build trust with all our stakeholders at every level.',
+  },
+  {
+    title: 'Growth',
+    description: 'We have carefully built our network to promote growth at every level.',
+  },
+  {
+    title: 'Excellence',
+    description: 'We believe in doing it the right and best way possible. We thrive in excellence.',
+  },
+  {
+    title: 'Integrity',
+    description: 'We make sure to keep to our word. We understand that most plans of our stakeholders lie with the promises we make.',
+  },
+  {
+    title: 'Teamwork',
+    description: 'We know that a single hand cannot tie a broom, that is why we believe in the strength our people to help our stakeholders experience their dreams.',
+  },
+  {
+    title: 'Innovation',
+    description: 'We are always looking for new ways, technology, regulations, and new markets to leverage on for amazing products for all our stakeholders.',
+  },
+];
 
+const bnplCardsData = [
+  {
+    title: 'Input Financing (BNPL)',
+    description: 'We help farmers afford all they need for a farming season.',
+    buttonText: 'Download on the App Store',
+    backgroundImage: '/cocoa_beans_bg.png',
+    id: 'input-financing',
+    iosLink: 'https://apps.apple.com/app',
+    androidLink: 'https://play.google.com/store/apps',
+  },
+  {
+    title: 'Offtake Aggregation',
+    description: 'We connect farmers to buyers and ensure fair pricing.',
+    buttonText: 'Download on Google Play',
+    backgroundImage: '/cocoa_beans_bg.png',
+    id: 'offtake-aggregation',
+    iosLink: 'https://apps.apple.com/app',
+    androidLink: 'https://play.google.com/store/apps',
+  },
+  {
+    title: 'Weather Insurance',
+    description: 'Protect your harvest from unpredictable weather conditions.',
+    buttonText: 'Get a Quote',
+    backgroundImage: '/cocoa_beans_bg.png',
+    id: 'weather-insurance',
+    iosLink: 'https://apps.apple.com/app',
+    androidLink: 'https://play.google.com/store/apps',
+  },
+  {
+    title: 'Soil Analysis',
+    description: 'Get detailed insights to optimize your soil and yield.',
+    buttonText: 'Request Analysis',
+    backgroundImage: '/cocoa_beans_bg.png',
+    id: 'soil-analysis',
+    iosLink: 'https://apps.apple.com/app',
+    androidLink: 'https://play.google.com/store/apps',
+  },
+  {
+    title: 'Digital Farming',
+    description: 'Use our app to manage your farm and access data.',
+    buttonText: 'Download App',
+    backgroundImage: '/cocoa_beans_bg.png',
+    id: 'digital-farming',
+    iosLink: 'https://apps.apple.com/app',
+    androidLink: 'https://play.google.com/store/apps',
+  },
+];
+
+const isIOS = () =>
+  typeof window !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+const isAndroid = () =>
+  typeof window !== 'undefined' && /Android/.test(navigator.userAgent);
+export default function Home() {
+  const cardsContainerRef = useRef<HTMLDivElement>(null);
+  const [activeLink, setActiveLink] = useState(bnplCardsData[0].id);
+
+  const handleScroll = () => {
+    if (!cardsContainerRef.current) return;
+
+    const container = cardsContainerRef.current;
+    const cards = container.children;
+    
+    let closestCardId = bnplCardsData[0].id;
+    let minDistance = Infinity;
+
+    // Determine which card is currently the most visible
+    for (let i = 0; i < cards.length; i++) {
+      const card = cards[i];
+      const rect = card.getBoundingClientRect();
+      const containerRect = container.getBoundingClientRect();
+      
+      const cardCenter = rect.left + rect.width / 2;
+      const containerCenter = containerRect.left + containerRect.width / 2;
+      const distance = Math.abs(cardCenter - containerCenter);
+
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestCardId = bnplCardsData[i].id;
+      }
+    }
+    setActiveLink(closestCardId);
+  };
+
+  useEffect(() => {
+    const container = cardsContainerRef.current;
+    if (container) {
+      container.addEventListener('scroll', handleScroll);
+      return () => container.removeEventListener('scroll', handleScroll);
+    }
+  }, []);
+
+  const scrollToCard = (id) => {
+    const cardElement = document.getElementById(id);
+    if (cardElement) {
+      const container = cardsContainerRef.current;
+      if (!container) return;
+      const containerRect = container.getBoundingClientRect();
+      const cardRect = cardElement.getBoundingClientRect();
+      
+      const scrollPosition = cardRect.left - containerRect.left + container.scrollLeft;
+      container.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+    }
+  };
   // Data for the "Input Financing (BNPL)" cards
-  const bnplCardsData = [
-    {
-      title: 'Input Financing (BNPL)',
-      description: 'We help farmers afford all they need for a farming season.',
-      buttonText: 'Sign up',
-      backgroundImage: '/cocoa_beans_bg.jpg', // Reusing the cocoa beans background
-    },
-    {
-      title: 'Input Financing (BNPL)',
-      description: 'We help farmers afford all they need for a farming season.',
-      buttonText: 'Sign up',
-      backgroundImage: '/cocoa_beans_bg.jpg', // Reusing the cocoa beans background
-    },
-    {
-      title: 'Input Financing (BNPL)',
-      description: 'We help farmers afford all they need for a farming season.',
-      buttonText: 'Sign up',
-      backgroundImage: '/cocoa_beans_bg.jpg', // Reusing the cocoa beans background
-    },
-    {
-      title: 'Input Financing (BNPL)',
-      description: 'We help farmers afford all they need for a farming season.',
-      buttonText: 'Sign up',
-      backgroundImage: '/cocoa_beans_bg.jpg', // Reusing the cocoa beans background
-    },
-    {
-      title: 'Input Financing (BNPL)',
-      description: 'We help farmers afford all they need for a farming season.',
-      buttonText: 'Sign up',
-      backgroundImage: '/cocoa_beans_bg.jpg', // Reusing the cocoa beans background
-    },
-    {
-      title: 'Input Financing (BNPL)',
-      description: 'We help farmers afford all they need for a farming season.',
-      buttonText: 'Sign up',
-      backgroundImage: '/cocoa_beans_bg.jpg', // Reusing the cocoa beans background
-    },
-  ];
 
-  // Data for the "Quick Links" sidebar
-  const quickLinksData = [
-    { name: 'Home', path: '/' },
-    { name: 'Services', path: '/services' },
-    { name: 'Register a Farm', path: '/register-farm' },
-    // Based on image_780dea.png, 'Home' and 'Services' were repeated.
-    // I've de-duplicated them for a cleaner list. Add more if needed.
-  ];
+
 
 
   return (
@@ -180,62 +246,70 @@ const HomePage: React.FC = () => {
           Our Services
         </h2>
 
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
-
-          {/* Left/Middle Column(s): Input Financing Cards - NOW SCROLLABLE */}
-          <div
-            className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8 pr-2"
-            style={{
-              maxHeight: '310px', // Height to show exactly 1 pair (2 cards) vertically (1 * 300px + gap)
-              overflow: 'hidden',
-            }}
+        
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+       <div className="col-span-1 lg:col-span-2 overflow-hidden">
+          <div 
+            ref={cardsContainerRef} 
+            className="flex gap-6 pb-4 -mr-4 lg:-mr-8 overflow-x-auto snap-x snap-mandatory"
           >
-            {bnplCardsData.slice(0, 2).map((card, index) => (
-              <div
-                key={index}
-                className="relative p-6 rounded-lg shadow-lg text-white overflow-hidden flex flex-col justify-between items-center text-center min-h-[300px]"
-                style={{
-                  backgroundImage: `url(${card.backgroundImage})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                }}
+            {bnplCardsData.map((card, index) => (
+              <div 
+                key={card.id} 
+                id={card.id} 
+                className="relative min-w-[80vw] md:min-w-[48%] lg:min-w-[48%] rounded-lg overflow-hidden h-96 shrink-0 snap-center"
               >
-                {/* Dark overlay for readability */}
-                <div className="absolute inset-0 bg-blue-900 opacity-80 z-0"></div>
-
-                {/* Card Content */}
-                <div className="relative z-10 flex flex-col items-center justify-center h-full">
-                  <h3 className="text-2xl font-bold mb-2">{card.title}</h3>
-                  <p className="text-base mb-6">{card.description}</p>
-                  <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors duration-200">
-                    {card.buttonText}
-                  </button>
+                <Image
+                  src={card.backgroundImage}
+                  alt={`Background for ${card.title}`}
+                  layout="fill"
+                  objectFit="cover"
+                  className="filter brightness-50"
+                />
+                <div className="absolute inset-0 flex flex-col justify-end p-6 text-white z-10">
+                  <h3 className="text-3xl font-bold mb-2 leading-tight">{card.title}</h3>
+                  <p className="text-base mb-4">{card.description}</p>
+                  <a
+                  href={isIOS() ? card.iosLink : card.androidLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-transparent border-2 border-white text-white font-bold py-2 px-6 rounded-md self-start hover:bg-white hover:text-blue-900 transition-colors duration-300"
+                >
+                  {isIOS() ? 'Download on the App Store' : 'Download on Google Play'}
+                </a>
                 </div>
               </div>
             ))}
           </div>
-
-          {/* Right Column: Quick Links Sidebar */}
-          <div className="w-full lg:col-span-1 bg-white p-6 rounded-lg shadow-lg">
-            <h3 className="text-xl font-bold text-gray-800 mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              {quickLinksData.map((link, index) => (
-                <li key={index}>
+        </div>
+        
+        {/* Services Links Section */}
+        <div className="w-full lg:w-72 border-l border-gray-300 p-6 flex flex-col max-h-[80vh] overflow-y-auto">
+          <h4 className="text-xl font-bold text-gray-800 mb-4">Services</h4>
+          <nav>
+            <ul>
+              {bnplCardsData.map((service) => (
+                <li key={service.id}>
                   <a
-                    href={link.path}
-                    className={`block py-2 px-3 text-gray-700 hover:bg-gray-100 rounded-md transition-colors duration-200
-                                ${link.name === 'Services' ? 'bg-gray-100 font-semibold' : ''}`}
+                    href={`#${service.id}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToCard(service.id);
+                    }}
+                    className={`block py-3 px-4 text-gray-800 transition-colors duration-200 hover:bg-gray-200 ${activeLink === service.id ? 'bg-gray-200 font-semibold' : ''}`}
                   >
-                    {link.name}
+                    {service.title}
                   </a>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
         </div>
+      </div>
       </section>
     </div>
   );
 };
 
-export default HomePage;
+/* Remove this line, as Home is already exported as default above */

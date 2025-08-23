@@ -32,9 +32,9 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-blue-400 text-white font-syne">
+    <footer className="bg-[#14B9C1] text-[#122342] font-syne">
       {/* Newsletter Section */}
-      <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row items-start text-left">
+      <div className="max-w-7xl -mb-10 mx-auto px-6 py-12 flex flex-col md:flex-row items-start text-left">
       <div className="flex flex-col gap-4 max-w-2xl">
         <div className="bg-blue-200 text-[#5D4037] rounded-full px-4 py-1 text-sm font-semibold mb-2 ">
           <center>Newsletter</center>
@@ -57,13 +57,13 @@ const Footer: React.FC = () => {
           <button
             type="submit"
             disabled={status === 'loading'}
-            className="bg-blue-900 px-6 py-2 rounded-r-md font-semibold hover:bg-blue-800 transition-colors"
+            className="bg-[#122342] text-[#14B9C1] px-6 py-2 rounded-r-md font-semibold hover:bg-blue-800 transition-colors"
           >
             {status === 'loading' ? 'Signing up...' : 'sign up'}
           </button>
         </form>
       </div>
-      <div className="hidden md:block mt-8 ml-auto">
+      <div className="hidden md:block mt-10 -mb-2 ml-auto">
         <img src="/img/handGestureImage.svg" alt="Hand Gesture" className="max-w-xs" />
       </div> {/* Closing div for the hidden image section */}
     </div>
@@ -105,9 +105,9 @@ const Footer: React.FC = () => {
           <div className="flex flex-col items-center space-y-6">
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="flex items-center space-x-2 bg-blue-900 px-4 py-2 rounded-md hover:bg-blue-800 transition-colors"
+              className="flex items-center space-x-2  px-4 py-2  rounded-md hover:bg-blue-800 transition-colors"
             >
-              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
+              <svg className="w-6 h-6 text-white bg-[#14B9C1] rounded-full " fill="#" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 15l7-7 7 7"></path>
               </svg>
               <span>Back to top</span>
