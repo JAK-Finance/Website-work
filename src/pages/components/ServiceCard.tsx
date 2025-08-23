@@ -1,5 +1,28 @@
 import React from 'react';
-import { Service } from '../data/servicesData';
+
+export interface ServiceFeature {
+  en: string;
+  fr: string;
+}
+export interface Service {
+  id: string;
+  title: {
+    en: string;
+    fr: string;
+  };
+  description: {
+    en: string;
+    fr: string;
+  };
+  features: ServiceFeature[];
+  icon: string;
+  color: string;
+  ctaText: {
+    en: string;
+    fr: string;
+  };
+  pagePath: string;
+}
 
 interface ServiceCardProps {
   service: Service;

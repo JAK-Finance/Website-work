@@ -134,3 +134,4 @@ export const getServiceById = (id: string): Service | undefined => {
 export const getAllServices = (): Service[] => {
   return servicesData;
 };
+
