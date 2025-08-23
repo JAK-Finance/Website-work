@@ -135,6 +135,13 @@ const RegisterPopup: React.FC<RegisterPopupProps> = ({ isOpen, onClose }) => {
                                 <option value="" disabled hidden className="bg-[#122342] text-gray-400">Region*</option>
                                 <option value="Adamawa" className="bg-[#122342]">Adamawa</option>
                                 <option value="Centre" className="bg-[#122342]">Centre</option>
+                                <option value="East" className="bg-[#122342]">East</option>
+                                <option value="Far North" className="bg-[#122342]">Far North</option>
+                                <option value="Northwest" className="bg-[#122342]">Northwest</option>
+                                <option value="South" className="bg-[#122342]">South</option>
+                                <option value="Southwest" className="bg-[#122342]">Southwest</option>
+                                <option value="West" className="bg-[#122342]">West</option>
+
                                 {/* Add other options */}
                             </select>
                         </div>
