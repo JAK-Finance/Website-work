@@ -31,11 +31,11 @@ const Navbar: React.FC<NavbarProps> = ({ menuItems, activeItem }) => {
             <div className="hidden md:flex space-x-6 ml-auto"> {/* Reduced spacing */}
               {menuItems.map((item) => {
                 // Determine if this item is active by comparing paths or names
-                const isActive = currentActiveItem === item.path || currentActiveItem === item.name;
+                const isActive = currentActiveItem === item.href || currentActiveItem === item.name;
                 return (
                   <a
                     key={item.name}
-                    href={item.path || '#'}
+                    href={item.href || '#'}
                     className={`text-gray-800 hover:text-sky-500 px-2 py-1 rounded-md text-sm font-medium transition-colors duration-200 whitespace-nowrap ${
                       isActive ? 'text-blue-600 underline' : ''
                     }`}

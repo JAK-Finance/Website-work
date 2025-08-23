@@ -13,11 +13,11 @@ import Navbar from './components/Navbar';  // Added import for Navbar
 import { MenuItem } from './components/types';
 
 const menuItems: MenuItem[] = [
-  { name: 'Home', path: '/' },
-  { name: 'About Us', path: '/about' },
-  { name: 'Services', path: '/services' },
-  { name: 'Team', path: '/team' },
-  { name: 'Contact', path: '/contact' },
+  { name: 'Home', href: '/' },
+  { name: 'About Us', href: '/about' },
+  { name: 'Services', href: '/services' },
+  { name: 'Team', href: '/team' },
+  { name: 'Contact', href: '/contact' },
 ];
 
 const quickLinks = [
@@ -148,15 +148,19 @@ export default function Home() {
     }
   }, []);
 
-  const scrollToCard = (id) => {
-    const cardElement = document.getElementById(id);
+  interface ScrollToCardParams {
+    id: string;
+  }
+
+  const scrollToCard = (id: ScrollToCardParams['id']): void => {
+    const cardElement: HTMLElement | null = document.getElementById(id);
     if (cardElement) {
       const container = cardsContainerRef.current;
       if (!container) return;
       const containerRect = container.getBoundingClientRect();
       const cardRect = cardElement.getBoundingClientRect();
-      
-      const scrollPosition = cardRect.left - containerRect.left + container.scrollLeft;
+
+      const scrollPosition: number = cardRect.left - containerRect.left + container.scrollLeft;
       container.scrollTo({ left: scrollPosition, behavior: 'smooth' });
     }
   };

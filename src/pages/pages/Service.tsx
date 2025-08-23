@@ -11,11 +11,11 @@ interface ServiceProps {
 }
 
 const menuItems: MenuItem[] = [
-  { name: 'Home', path: '/' },
-  { name: 'About Us', path: '/about' },
-  { name: 'Services', path: '/services' },
-  { name: 'Team', path: '/team' },
-  { name: 'Contact', path: '/contact' },
+  { name: 'Home', href: '/' },
+  { name: 'About Us', href: '/about' },
+  { name: 'Services', href: '/services' },
+  { name: 'Team', href: '/team' },
+  { name: 'Contact', href: '/contact' },
 ];
 
 

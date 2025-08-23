@@ -53,7 +53,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
             {menuItems.map((item: MenuItem) => (
               <li key={item.name}>
                 <a
-                  href={item.path || '#'}
+                  href={item.href || '#'}
                   onClick={() => setActiveItem(item.name)}
                   className={`block px-6 py-3 text-right text-lg font-medium transition-colors duration-200 ${
                     activeItem === item.name
