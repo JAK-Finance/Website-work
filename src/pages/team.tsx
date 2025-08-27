@@ -1,6 +1,6 @@
 import React from 'react';
 import Team from './pages/Team';
-import { MenuItem } from './components/types';
+import { MenuItem } from '@/components/types';
 
 const menuItems: MenuItem[] = [
   { name: 'Home', href: '/' },

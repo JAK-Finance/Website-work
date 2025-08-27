@@ -1,6 +1,6 @@
 import React from 'react';
 import Contact from './pages/Contact';
-import { MenuItem } from './components/types';
+import { MenuItem } from '@/components/types';
 
 const menuItems = [
   { name: 'Home', href: '/' },

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
-import Header from '../components/Header';
-import { MenuItem } from '../components/types';
-import Navbar from '../components/Navbar';
+import Header from '@/components/Header';
+import { MenuItem } from '@/components/types';
+import Navbar from '@/components/Navbar';
 
 interface TeamProps {
   menuItems: MenuItem[];

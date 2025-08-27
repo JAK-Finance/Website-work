@@ -6,7 +6,7 @@ import { DropdownMenuProps, MenuItem } from './types';
 const DropdownMenu: React.FC<DropdownMenuProps> = ({
   isOpen,
   onClose,
-  menuItems,
+  menuItems = [],
   initialActiveItem,
 }) => {
   const [activeItem, setActiveItem] = useState<string | undefined>(initialActiveItem);

@@ -1,9 +1,9 @@
 import React from 'react';
 import Head from 'next/head';
-import Header from '../components/Header';
+import Header from '@/components/Header';
 // import Footer from '../components/Footer';
-import { MenuItem } from '../components/types';
-import Navbar from '../components/Navbar';  // Added import for Navbar
+import { MenuItem } from '@/components/types';
+import Navbar from '@/components/Navbar';
 
 
 interface ContactProps {

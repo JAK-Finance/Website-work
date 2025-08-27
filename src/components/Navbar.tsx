@@ -8,7 +8,7 @@ interface NavbarProps {
   activeItem?: string;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ menuItems, activeItem }) => {
+const Navbar: React.FC<NavbarProps> = ({ menuItems = [], activeItem }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router = useRouter();
 

@@ -1,9 +1,9 @@
 import React from 'react';
 import Head from 'next/head';
-import Header from '../components/Header';
-import { MenuItem } from '../components/types';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import Header from '@/components/Header';
+import { MenuItem } from '@/components/types';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 interface AboutProps {
   menuItems: MenuItem[];

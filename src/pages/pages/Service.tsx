@@ -1,10 +1,10 @@
 import React from 'react';
 import Head from 'next/head';
-import Navbar from '../components/Navbar';
-import ServiceCard from '../components/ServiceCard';
-import { servicesData } from '../data/servicesData';
-import { MenuItem } from '../components/types';
-import Header from '../components/Header';
+import Navbar from '@/components/Navbar';
+import ServiceCard from '@/components/ServiceCard';
+import { servicesData } from '@/data/servicesData';
+import { MenuItem } from '@/components/types';
+import Header from '@/components/Header';
 
 interface ServiceProps {
   menuItems: MenuItem[];
